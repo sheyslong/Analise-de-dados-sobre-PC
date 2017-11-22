@@ -26,17 +26,10 @@ for(indice in 1:length(links)){
 	}
 }
 
-resultado <- c()
+#Teste básico de análise
+col1 <- c(3, 11, 2)
+todos<- c(7, 16, 3)
+dados <- prop.test(col1, todos, 0.95)
+dados
 
-file = links[1]
-dados <- read.csv(file, header = TRUE, sep = ",", dec = ".")
-graduados <- dados[1,2]
-mestres <- dados[1,3]
-doutores <- dados[1,4]
-todos <- dados[1,5]
-
-resultadoD <-prop.test(doutores, prop.test(mestres, prop.test(graduados, todos, 0.95, correct=F), 0.95, correct=F
-][), 0.95)
-
-resultadoD
 
