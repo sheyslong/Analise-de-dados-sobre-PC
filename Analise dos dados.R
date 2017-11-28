@@ -26,4 +26,7 @@ for(indice in 1:9){
   }
 }
 
+#Fazer:
+	#arredondar os p-values
+	#armazenar em um arquivo csv ou incrementar nos arquivos ja existentes
 
