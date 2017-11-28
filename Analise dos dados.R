@@ -13,23 +13,17 @@ links <- c("C:/Users/Sheilla/Documents/Pesquisa/Dados da pesquisa/Analise de dad
 
 #Laço que lê arquivo por arquivo e armazena em dados
 #Obs: dados atualiza seus valores a cada iteração do laço.
-resultado <- c()
-for(indice in 1:length(links)){
-	file = links[indice]
-	dados <- read.csv(file, header = TRUE, sep = ",", dec = ".")
-	for(coluna in 2:4){
-		for(indVetor in 1: length(dados[,coluna])){
-			coluna <- dados[indVetor,coluna]
-			todos <- dados[indVetor,5]
-			resultado <- prop.test(coluna, todos, 0.95)
-		}
-	}
+#Tabela contém todos os p-value
+tabela <- data.frame() 
+for(indice in 1:9){
+  file = links[indice]
+  dados <- read.csv(file, header = TRUE, sep = ",", dec = ".")
+  for(numLinha in 1:7){
+    linha <- c(dados[numLinha, 2], dados[numLinha, 3], dados[numLinha, 4])
+    todos <- c(10, 27, 5)
+    resultado <- (prop.test(linha, todos))
+    tabela <- rbind(tabela, data.frame(Nome = "p-value", valor = resultado[3])) 
+  }
 }
-
-#Teste básico de análise
-col1 <- c(3, 11, 2)
-todos<- c(7, 16, 3)
-dados <- prop.test(col1, todos, 0.95)
-dados
 
 
